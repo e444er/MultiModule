@@ -1,0 +1,1 @@
+C:\Users\droid\AndroidStudioProjects\MultiModule\buildSrc\build\classes\kotlin\main\Deps.class;C:\Users\droid\AndroidStudioProjects\MultiModule\buildSrc\build\classes\kotlin\main\Versions.class
