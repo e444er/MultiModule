@@ -27,7 +27,7 @@
             app:lottie_rawRes="@raw/phone" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="News"
