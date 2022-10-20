@@ -15,6 +15,7 @@ class NewsRepoImpl(private val newsApiService: NewsApiService, private val newsD
             newsDAO.insertList(temp)
             newsDAO.getNewsArticle()
         } catch (e: Exception) {
+
             newsDAO.getNewsArticle()
         }
     }
