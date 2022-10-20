@@ -1,7 +1,9 @@
 package com.e444er.multimodule
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.e444er.common_utils.Activities
 import com.e444er.common_utils.Navigator
@@ -13,11 +15,11 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var provider:Navigator.Provider
+    lateinit var provider: Navigator.Provider
 
     private var _binding: ActivityMainBinding? = null
-    private val binding : ActivityMainBinding
-    get() = _binding!!
+    private val binding: ActivityMainBinding
+        get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +27,9 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        provider.getActivities(Activities.NewsActivity).navigate(this)
-
+        Handler(Looper.myLooper()!!).postDelayed({
+            provider.getActivities(Activities.NewsActivity).navigate(this)
+            finish()
+        }, 1200)
     }
 }
