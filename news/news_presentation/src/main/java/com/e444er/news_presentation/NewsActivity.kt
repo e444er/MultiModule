@@ -8,13 +8,18 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.e444er.common_utils.Activities
 import com.e444er.common_utils.Navigator
 import com.e444er.news_presentation.databinding.ActivityNewsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class NewsActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var provider: Navigator.Provider
 
     companion object {
         fun launchActivity(activity: Activity) {
@@ -40,11 +45,13 @@ class NewsActivity : AppCompatActivity() {
         initView()
 
         setObservers()
-
     }
 
     private fun initView() {
         binding.rvArticles.adapter = newsAdapter
+        binding.ivGoToSearch.setOnClickListener {
+            provider.getActivities(Activities.SearchActivity).navigate(this)
+        }
     }
 
     private fun setObservers() {
@@ -63,7 +70,6 @@ class NewsActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
 }
 
