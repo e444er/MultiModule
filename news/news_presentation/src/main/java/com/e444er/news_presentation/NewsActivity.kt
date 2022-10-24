@@ -2,11 +2,13 @@ package com.e444er.news_presentation
 
 import android.app.Activity
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import com.e444er.common_utils.Activities
 import com.e444er.common_utils.Navigator
@@ -51,6 +53,14 @@ class NewsActivity : AppCompatActivity() {
         binding.rvArticles.adapter = newsAdapter
         binding.ivGoToSearch.setOnClickListener {
             provider.getActivities(Activities.SearchActivity).navigate(this)
+        }
+        binding.toNight.setOnClickListener {
+            when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+                Configuration.UI_MODE_NIGHT_YES ->
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                Configuration.UI_MODE_NIGHT_NO ->
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
         }
     }
 
